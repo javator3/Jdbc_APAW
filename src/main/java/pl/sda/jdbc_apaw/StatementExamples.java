@@ -13,7 +13,8 @@ public class StatementExamples {
 
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ksiegarnia?serverTimezone=UTC", "root", "dupa23");
 //        createTable(connection);
-        insert5newEmployees(connection);
+//        insert5newEmployees(connection);
+        dropTable(connection);
 
     }
 
@@ -33,8 +34,14 @@ public class StatementExamples {
         Statement statement = connection.createStatement();
 
         for (int i = 0; i < 5; i++) {
-            statement.executeUpdate("insert into employee3(name, salary) values ('name', 1234)");
+            String formatedString = String.format("insert into employee3(name, salary) values ('name%s', 1234)", i);
+            statement.executeUpdate(formatedString);
 
         }
+    }
+
+    static void dropTable (Connection connection) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.execute("drop table employee3");
     }
 }
