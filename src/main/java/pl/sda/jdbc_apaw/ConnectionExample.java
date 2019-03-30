@@ -1,5 +1,6 @@
 package pl.sda.jdbc_apaw;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -9,7 +10,9 @@ public class ConnectionExample {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        DriverManager.getConnection("jdbc:mysql://localhost:3306/ksiegarnia?serverTimezone=UTC","root", "dupa23");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ksiegarnia?serverTimezone=UTC", "root", "dupa23");
+
+
 
     }
 }
